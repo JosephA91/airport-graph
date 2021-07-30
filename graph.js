@@ -2,7 +2,7 @@
 const airports = 'PHX BKK OKC JFK LAX MEX EZE HEL LOS LAP LIM'.split(' ');
 
 const routes = [
-	['PHX', 'LAX'],
+  ['PHX', 'LAX'],
   ['PHX', 'JFK'],
   ['JFK', 'OKC'],
   ['JFK', 'HEL'],
@@ -19,12 +19,12 @@ const adjacenyList = new Map();
 
 // Add Node
 function addNode(airport) {
-	adjacenyList.set(airport, []);
+  adjacenyList.set(airport, []);
 }
 
 // Add Edge, undirected
 function addEdge(origin, destination) {
-	adjacenyList.get(origin).push(destination);
+  adjacenyList.get(origin).push(destination);
   adjacenyList.get(destination).push(origin);
 }
 
@@ -40,7 +40,7 @@ function bfs(start, airportToFind) {
   const visited = new Set();
   const queue = [start];
 
-  while(queue.length > 0) {
+  while (queue.length > 0) {
     const airport = queue.shift();
     const destinations = adjacenyList.get(airport);
 
@@ -71,7 +71,7 @@ function dfs(start, airportToFind, visited = new Set()) {
 
   for (const destination of destinations) {
     steps++
-  
+
     if (destination === airportToFind) {
       console.log(`DFS found ${airportToFind} in ${steps} steps`);
       return;
